@@ -1,0 +1,56 @@
+<div class="container">
+    <form [formGroup]="myfm" (ngSubmit)="onsubmitt()">
+<div class="form-group"> 
+      <label>First Name</label>
+      <input type="text"  class="form-control" formControlName="fname"  
+      [ngClass]="{'is-valid':submitted && fn.fname.errors}">
+      <div *ngIf="submitted && fn.fname.errors" class="invalid-feedback">
+        <div *ngIf="fn.fname.errors.required">First Name is required</div>
+        <div *ngIf="fn.fname.errors.pattern">phone must be a valid email address</div>
+    </div>
+</div>
+
+<div class="form-group">
+  <label>Last Name</label>
+  <input type="text" class="form-control" formControlName="lname" 
+  [ngClass]="{'is-invalid':submitted && fn.lname.required}">
+  <div *ngIf="submitted && fn.lname.errors" class="invalid-feedback">
+       <div *ngIf="fn.lname.errors.required">last name is required</div>
+  </div>
+</div>
+
+<div class="form-group">
+    <label>Phone Number</label>
+    <input  class="form-control"  maxlength="10" formControlName="phone" 
+    [ngClass]="{'is-invalid':submitted && fn.phone.required}">
+    <div *ngIf="submitted && fn.phone.errors" class="invalid-feedback">
+         <div *ngIf="fn.phone.errors.required">phone number is required</div>
+         <div *ngIf="fn.phone.errors.pattern">phone must be a valid email address</div>
+    </div>
+  </div>
+
+<!-- <div class="form-group">
+  <label>Email</label>
+  <input type="text" formCotrolName="email" class="form-control" 
+  [ngClass]="{'is-invalid':submitted && fn.email.errors}">
+  <div *ngIf="submitted && fn.email.errors" class="invalid-feedback">
+    <div *ngIf="fn.email.errors.required">Email is required</div>
+    <div *ngIf="fn.email.errors.email">Email must be a valid email address</div>
+</div>
+</div> -->
+<div class="form-group">
+    <label>Email</label>
+    <input type="text" formControlName="email" class="form-control"
+     [ngClass]="{ 'is-invalid': submitted && fn.email.errors }" />
+    <div *ngIf="submitted && fn.email.errors" class="invalid-feedback">
+        <div *ngIf="fn.email.errors.required">Email is required</div>
+        <div *ngIf="fn.email.errors.email">Email must be a valid email address</div>
+    </div>
+</div>
+
+<input type='date' class="form-control"  formControlName='dob' max='{{mdate}}'>
+      <div class="form-group">
+          <button >submit</button>
+      </div>
+    </form>
+  </div>
